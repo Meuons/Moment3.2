@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Moment3._2.Models.Albums>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Albums</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Albums" asp-action="Index">
+    <p>
+        Title: <input type="text" name="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artist)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rented)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th>
+                Genre
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artist)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rented)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genres.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AlbumsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AlbumsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AlbumsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

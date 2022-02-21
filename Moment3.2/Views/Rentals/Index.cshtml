@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Moment3._2.Models.Rentals>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Rentals</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Album
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Albums.Title)
+            </td>
+            <td>
+             
+                <a asp-action="Details" asp-route-id="@item.RentalsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RentalsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
