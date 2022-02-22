@@ -183,9 +183,11 @@ namespace Moment3._2.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var rentals = await _context.Rentals.FindAsync(id);
+            var album = _context.Albums.Where(d => d.AlbumsId == rentals.AlbumsId).First();
+            album.Rented = false;
             _context.Rentals.Remove(rentals);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index)); 
         }
 
         private bool RentalsExists(int id)

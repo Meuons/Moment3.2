@@ -14,7 +14,6 @@ namespace Moment_3._2.Data
         }
 
         public DbSet<Albums> Albums { get; set; }
-        public DbSet<Users> Users { get; set; }
         public DbSet<Genres> Genres { get; set; }
     }
 }
